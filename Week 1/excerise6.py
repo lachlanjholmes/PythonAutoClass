@@ -23,8 +23,9 @@ def listie():
     # yaml Dumping
     with open('yaml_list.yml','w') as f:
         f.write(yaml.dump(my_list, default_flow_style=False))
+        
     # Json Dumping    
-    with open('json_list.yml','w') as f:
+    with open('json_list.json','w') as f:
         json.dump(my_list, f)
 
 if __name__ == "__main__":

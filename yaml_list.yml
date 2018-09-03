@@ -1,0 +1,4 @@
+- device: cisco_ios
+  ip: 1.1.1.1
+- random_string
+- Another one
