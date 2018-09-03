@@ -3,7 +3,11 @@ Write a Python program that reads both the YAML file and the JSON file created i
 """
 import yaml
 import json
+# import os
 from pprint import pprint
+
+# path = os.getcwd()
+# print(path)
 
 
 with open('yaml_list.yml','r') as f:
