@@ -7,7 +7,7 @@ The YAML file should be in the expanded form.
 import yaml
 import json
 
-def listie():
+def main():
 
     my_dictionary = {
         'ip' : '1.1.1.1',
@@ -29,4 +29,4 @@ def listie():
         json.dump(my_list, f)
 
 if __name__ == "__main__":
-    listie()
+    main()
