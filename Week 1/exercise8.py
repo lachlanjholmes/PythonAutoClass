@@ -5,4 +5,16 @@ The script should find all of the crypto map entries in the file (lines that beg
 and for each crypto map entry print out its children.
 """
 
+from ciscoconfparse import CiscoConfParse
 
+def main():
+    cisco_file = 'cisco_ipsec.txt'
+
+    output = CiscoConfParse(cisco_file)
+    crypto_output = output.find_children(r'crypto map CRYPTO')
+
+    for child in crypto_output:
+        print(child)
+
+if __name__ == "__main__":
+    main()
