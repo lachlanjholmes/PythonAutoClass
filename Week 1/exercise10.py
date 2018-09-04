@@ -9,7 +9,7 @@ def main():
     cisco_file = 'cisco_ipsec.txt'
 
     output = CiscoConfParse(cisco_file)
-    crypto_output = output.find_objects_w_child(parentspec=r'crypto map CRYPTO',childspec=r'set pfs group2')
+    crypto_output = output.find_objects_wo_child(parentspec=r'crypto map CRYPTO',childspec=r'set transform-set AES-SHA')
 
     for child in crypto_output:
         print(child.text)
