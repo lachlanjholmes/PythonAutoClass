@@ -4,6 +4,7 @@ Print these entries and their corresponding transform set name.
 """
 
 from ciscoconfparse import CiscoConfParse
+import re
 
 def main():
     cisco_file = 'cisco_ipsec.txt'
@@ -11,14 +12,14 @@ def main():
     output = CiscoConfParse(cisco_file)
     crypto_output = output.find_objects_wo_child(parentspec=r'crypto map CRYPTO',childspec=r'AES')
 
-for i in crypto_output:
-    for child in i.children:
-        if 'transform' in child.text:
-                match = re.search(r'set transform-set (\S*)', child.text)
-                # print(match)
-                encryption = match.group(1)
-    print('crypto maps that don\'t use AES and what they are using instead:')
-    print(i.text.strip(),"|", encryption)
+    for i in crypto_output:
+        for child in i.children:
+            if 'transform' in child.text:
+                    match = re.search(r'set transform-set (\S*)', child.text)
+                    # print(match)
+                    encryption = match.group(1)
+        print('crypto maps that don\'t use AES and what they are using instead:')
+        print(i.text.strip(),"|", encryption)
 
 if __name__ == "__main__":
     main()
