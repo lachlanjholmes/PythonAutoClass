@@ -9,10 +9,15 @@ def main():
     cisco_file = 'cisco_ipsec.txt'
 
     output = CiscoConfParse(cisco_file)
-    crypto_output = output.find_objects_wo_child(parentspec=r'crypto map CRYPTO',childspec=r'set transform-set AES-SHA')
+    crypto_output = output.find_objects_wo_child(parentspec=r'crypto map CRYPTO',childspec=r'AES')
 
-    for child in crypto_output:
-        print(child.text)
+for i in crypto_output:
+    for child in i.children:
+        if 'transform' in child.text:
+                match = re.search(r'set transform-set (\S*)', child.text)
+                # print(match)
+                encryption = match.group(1)
+    print(i.text.strip(),">", encryption)
 
 if __name__ == "__main__":
     main()
