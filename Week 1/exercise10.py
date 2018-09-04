@@ -17,7 +17,8 @@ for i in crypto_output:
                 match = re.search(r'set transform-set (\S*)', child.text)
                 # print(match)
                 encryption = match.group(1)
-    print(i.text.strip(),">", encryption)
+    print('crypto maps that don\'t use AES and what they are using instead:')
+    print(i.text.strip(),"|", encryption)
 
 if __name__ == "__main__":
     main()
